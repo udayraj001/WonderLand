@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+
+
+  /* App.css */
+  body.day {
+    background-color: white;
+    color: rgb(36, 34, 34);
+    
+  }
+  
+  body.night {
+    background-color: rgb(28, 27, 27);
+    color: white;
+    
+  }
+  
+  /* Ensure text is visible in night mode */
+  body.night .text-dark {
+    color: white;
+  }
+  
+  body.day .text-light {
+    color: rgb(8, 8, 8);
+  }
+  
+
+  /* In your global CSS file */
+html {
+    scroll-behavior: smooth;
+  }
+  
