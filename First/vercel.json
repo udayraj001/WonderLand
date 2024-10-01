@@ -1,0 +1,20 @@
+{
+    
+    "builds": [
+      {
+        "src": "First/wsgi.py",
+        "use": "@vercel/static-build",
+        "config": {
+          "maxLambdaSize": "15mb",
+          "runtime": "python3.9"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "First/wsgi.py"
+      }
+    ]
+  }
+  
