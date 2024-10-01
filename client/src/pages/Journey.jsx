@@ -5,9 +5,10 @@ import TourPackages from "../journeyComponents/TourPackages";
 import CityPackages from "../journeyComponents/CityPackages";
 import NextTour from "../journeyComponents/NextTour";
 import Slider from "react-slick";
+import { route } from "../constant/apiUrl";
 
 const fetchJourney = async () => {
-  const result = await fetch("http://127.0.0.1:8000/Car/Journey/");
+  const result = await fetch(`${route}/Car/Journey/`);
   return result.json();
 };
 
