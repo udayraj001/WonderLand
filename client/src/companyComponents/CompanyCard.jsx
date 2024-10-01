@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { companyUrl, route } from "../constant/apiUrl";
 
 const CompanyCard = () => {
   const [data, setData] = useState(null);
@@ -7,7 +8,7 @@ const CompanyCard = () => {
   useEffect(() => {
     // Fetch company data from the backend
     axios
-      .get("http://127.0.0.1:8000/Car/Company/")
+      .get(`${companyUrl}`)
       .then((response) => {
         setData(response.data);
       })
