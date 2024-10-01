@@ -109,8 +109,8 @@ const Navbar = () => {
 
             <li>
               <Link
-                to="/logout"
-                onClick={() => handleNavigation("Logout")}
+                to="/register"
+                onClick={() => handleNavigation("Register")}
                 className='hover:text-red-500 border border-gray-600 rounded p-2 px-5'
               >
                 Sign up
