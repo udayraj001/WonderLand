@@ -1,4 +1,4 @@
-export const host = "http://127.0.0.1:8000"
-export const route = "http://127.0.0.1:8000/Car"
+export const host = import.meta.env.VITE_SERVER_URL
+export const route = host + "Car"
 export const companyUrl = `${route}/Company/`;
 export const journeyUrl = `${route}/Journey/`;
