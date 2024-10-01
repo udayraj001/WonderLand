@@ -1,0 +1,27 @@
+{
+    "version": 2,
+    "name": "wonderland-travel-agency",
+    "builds": [
+      {
+        "src": "client/package.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "client/build"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": " http://127.0.0.1:8000//api/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/Client/$1"
+      }
+    ],
+    "env": {
+      "REACT_APP_API_URL": " http://127.0.0.1:8000/"
+    }
+  }
+  
