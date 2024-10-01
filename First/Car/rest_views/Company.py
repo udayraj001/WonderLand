@@ -19,8 +19,8 @@ class CompanyRest(APIView):
             company_action_logs = {
                 "timestamp" : timestamp.strftime("%y-%m-%d %H:%M:%S")
             }
-            with open(f'{BASE_DIR}/static/logs/company_logs.log','a') as f:
-                f.write(f'{str(company_action_logs)}\n')
+            # with open(f'{BASE_DIR}/static/logs/company_logs.log','a') as f:
+            #     f.write(f'{str(company_action_logs)}\n')
 
             return Response(serializer.data,status=status.HTTP_200_OK)
         
