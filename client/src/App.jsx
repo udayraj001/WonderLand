@@ -22,13 +22,13 @@ const App = () => {
       <Router>         
        
             <Routes>
-              <Route path="/company" element={<Company/>} />
+              <Route path="/" element={<Company/>} />
               <Route path="/customer" element={<Customer />} />
               <Route path="/journey" element={<Journey />} />
               <Route path="/services" element={<Service />} />
               <Route path="/contact_us" element={<ContactUs />} />
               <Route path="/login" element={<Login/>} />
-              <Route path="/" element={<Register/>} />
+              <Route path="/register" element={<Register/>} />
 
             </Routes>
         <Footer/>

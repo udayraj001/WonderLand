@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { FaEnvelope, FaLock } from 'react-icons/fa'; // For icons
 import register from '../assets/register.png'
+import { route } from '../constant/apiUrl';
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -12,7 +13,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8000/Car/Register/', { email, password });
+      const response = await axios.post(`${route}/Register/`, { email, password });
       setMessage(response.data.message);
       alert('Successfully Registered');
       navigate('/company');

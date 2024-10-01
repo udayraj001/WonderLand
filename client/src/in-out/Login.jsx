@@ -9,6 +9,7 @@ import {
   FaLock,
 } from "react-icons/fa";
 import login from '../assets/login.png'
+import { route } from "../constant/apiUrl";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -19,7 +20,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://127.0.0.1:8000/Car/Login/", {
+      const response = await axios.post(`${route}/Car/Login/`, {
         email,
         password,
       });

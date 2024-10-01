@@ -28,7 +28,7 @@ const Navbar = () => {
           <ul className="w-full flex space-x-6 text-sm font-semibold items-center justify-center gap-5 md:text-[#212832] pl-16">
             <li>
               <Link
-                to="/company"
+                to="/"
                 onClick={() => handleNavigation("Company")}
                 className={`cursor-pointer ${
                   activeLink === "Company"
