@@ -3,7 +3,7 @@
     "builds": [
       {
         "src": "First/wsgi.py",
-        "use": "@vercel/static-build",
+        "use": "@vercel/python",
         "config": {
           "maxLambdaSize": "15mb",
           "runtime": "python3.10"
