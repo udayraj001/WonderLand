@@ -1,19 +1,29 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { companyUrl, route } from "../constant/apiUrl";
+import { companyUrl } from "../constant/apiUrl";
 
 const CompanyCard = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]); // Initialize data as an empty array
+  const [loading, setLoading] = useState(true); // Loading state to show while fetching data
+  const [error, setError] = useState(null); // Error state to handle API errors
 
   useEffect(() => {
     // Fetch company data from the backend
     axios
-      .get(`${companyUrl}`)
+      .get(companyUrl)
       .then((response) => {
-        setData(response.data);
+        if (Array.isArray(response.data)) {
+          setData(response.data); // Set data only if it's an array
+        } else {
+          console.error("Unexpected data format:", response.data);
+          setError("Invalid data format received from the server.");
+        }
+        setLoading(false); // Set loading to false after fetching data
       })
       .catch((error) => {
         console.error("Error fetching the data:", error);
+        setError("Failed to fetch data.");
+        setLoading(false);
       });
   }, []);
 
@@ -22,16 +32,23 @@ const CompanyCard = () => {
       <h2 className="text-4xl font-bold text-center mb-8 text-gray-500">
         Who Are We{" "}
       </h2>
-      <div className="flex flex-col lg:flex-row w-full ">
+      <div className="flex flex-col lg:flex-row w-full">
         <div>
-          {data ? (
+          {loading ? (
+            <div className="w-full flex items-center justify-center">
+              <p className="text-3xl text-gray-500">Loading...</p>
+            </div>
+          ) : error ? (
+            <div className="w-full flex items-center justify-center">
+              <p className="text-3xl text-red-500">{error}</p>
+            </div>
+          ) : (
             data.map((item, index) => (
               <div
                 key={index}
                 className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden mb-6"
               >
                 <div className="p-6">
-                  
                   <p className="text-lg font-medium text-gray-600">
                     Name: {item.cName}
                   </p>
@@ -46,15 +63,10 @@ const CompanyCard = () => {
                 </div>
               </div>
             ))
-          ) : (
-            <div className="w-full flex items-center justify-center">
-              <p className="text-3xl text-gray-500">Loading...</p>
-            </div>
           )}
         </div>
 
         <div className="bg-white lg:w-2/3 p-8 text-gray-500">
-         
           <p>
             Our vision is to expand our services globally and become a leader in
             the travel industry. By 2025, we aim to operate in over 50
